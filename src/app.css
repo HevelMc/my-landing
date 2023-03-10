@@ -6,7 +6,7 @@
   --color-to: #3b82f6;
   --color-light: #b6ceff;
   --color-dark: #1d4ed8;
-  --image: url('/wave.png');
+  --image: url('/static/wave.png');
   --size: 4rem;
 }
 
@@ -15,7 +15,7 @@
   --color-to: #a855f7;
   --color-light: #f9c2ff;
   --color-dark: #d10e52;
-  --image: url('/barbate.png');
+  --image: url('/static/barbate.png');
 
   --size: 6rem;
 }

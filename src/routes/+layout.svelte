@@ -1,5 +1,5 @@
 <script>
-    import { onMount } from "svelte";
+  import { onMount } from "svelte";
   import "../app.css";
   import AppBar from "../components/AppBar.svelte";
 
@@ -12,6 +12,9 @@
       input = input.slice(-7).toLowerCase();
       if (input === "barbate") {
         isBarbate = true;
+        const audio = new Audio("/barbate.mp3");
+        audio.play();
+        console.log("Barbate!");
       }
       if (event.key === "Escape") {
         input = "";
