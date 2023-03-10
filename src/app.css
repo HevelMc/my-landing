@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+
+.theme-default {
+  --color-from: #14b8a6;
+  --color-to: #3b82f6;
+  --color-light: #b6ceff;
+  --color-dark: #1d4ed8;
+  --image: url('/wave.png');
+  --size: 4rem;
+}
+
+.theme-barbate {
+  --color-from: #ec4899;
+  --color-to: #a855f7;
+  --color-light: #f9c2ff;
+  --color-dark: #d10e52;
+  --image: url('/barbate.png');
+
+  --size: 6rem;
+}
+
+@tailwind utilities;
