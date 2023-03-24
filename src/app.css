@@ -7,7 +7,7 @@
   --color-light: #b6ceff;
   --color-dark: #1d4ed8;
   --image: url('/wave.png');
-  --size: 4rem;
+  --size: 1;
 }
 
 .theme-barbate {
@@ -17,7 +17,7 @@
   --color-dark: #d10e52;
   --image: url('/barbate.png');
 
-  --size: 6rem;
+  --size: 1.3;
 }
 
 @tailwind utilities;

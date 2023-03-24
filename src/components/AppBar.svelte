@@ -18,7 +18,7 @@
       </div>
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
         <div class="flex flex-shrink-0 items-center">
-          <a href="/" class="text-white text-lg font-semibold">@HevelMc/</a>
+          <a href="/" class="text-white text-lg font-semibold"><span class="text-2xl mr-2 align-middle">🖥️</span> Axel Lopez</a>
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">

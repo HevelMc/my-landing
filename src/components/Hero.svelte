@@ -3,11 +3,11 @@
 
   onMount(() => {
     addEventListener("mousemove", followMouse);
-  })
+    // spawn_bubbles();
+  });
 
   function scrollSection(id: string) {
 		const el = document.getElementById(id);
-		console.log(el);
 		if (!el) return;
 		el.scrollIntoView({ behavior: 'smooth' });
 	}
@@ -15,6 +15,8 @@
   function followMouse(event: MouseEvent) {
     let el = document.getElementById('cursor-blur');
     if (!el) return;
+    el.style.visibility = 'visible';
+
     el.style.left = event.clientX + 'px';
     el.style.top = event.clientY + 'px';
 
@@ -28,20 +30,49 @@
     let opacity = 0.3 - distance / 2000;
     el.style.opacity = opacity.toString();
   }
+
+  function spawn_bubbles() {
+    let main = document.getElementById('hero');
+    if (!main) return;
+    let mainRect = main.getBoundingClientRect();
+    let mainWidth = mainRect.width;
+    let mainHeight = mainRect.height;
+
+    console.log(mainWidth, mainHeight);
+
+    const bubbles = document.getElementsByClassName('bubble');
+
+    for (let i = 0; i < bubbles.length; i++) {
+      let bubble = bubbles[i] as HTMLElement;
+      bubble.style.scale = Math.random() * 1.5 + 1 + '';
+      let x = Math.random() * mainWidth - mainWidth / 2;
+      let y = Math.random() * mainHeight - mainHeight / 2;
+      bubble.style.transform = `translate(${x}px, ${y}px)`;
+      bubble.style.visibility = 'visible';
+      bubble.style.transition = 'transform 3s';
+
+      setInterval(() => {
+        let x = Math.random() * mainWidth - mainWidth / 2;
+        let y = Math.random() * mainHeight - mainHeight / 2;
+        bubble.style.transform = `translate(${x}px, ${y}px)`;
+      }, 6000);
+    }
+  }
 </script>
 
-<div class="pt-64 pb-64 select-none">
+<section id="hero" class="py-32 md:py-48 select-none flex flex-grow-0 overflow-hidden flex-col items-center justify-center touch-none">
   <div class="flex flex-col items-center">
-    <div class="flex">
-      <img src="/alopez-circle.png" alt="alopez" class="w-24 h-24 rounded-full object-cover" />
-      <span id="welcome" class="text-5xl font-bold text-white self-center mx-6">Welcome</span>
-      <span class="text-5xl font-bold text-white self-center"><span class="wave text-6xl">
-        <img style="content: var(--image); width: var(--size); height: var(--size);" alt="wave" class="transition-all" />
-      </span>
+    <div class="flex flex-col md:flex-row items-center gap-4">
+      <img src="/alopez-circle.png" alt="alopez" class="w-48 h-48 md:w-24 md:h-24 rounded-full object-cover" />
+      <div class="flex items-center">
+        <span id="welcome" class="text-3xl md:text-5xl font-bold text-white self-center mx-6">Welcome</span>
+        <span class="text-3xl md:text-5xl font-bold text-white self-center">
+          <img style="content: var(--image); scale: var(--size);" alt="wave" class="transition-all w-12 h-12" />
+        </span>
+      </div>
     </div>
-    <p class="text-white text-2xl mt-12">I'm <span class="font-bold animate-text bg-gradient-to-r bg-clip-text text-transparent from-from to-to">Axel Lopez</span></p>
-    <p class="text-white text-2xl">A <span class="font-bold animate-text bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">software developer</span> and student at <span class="font-bold animate-text bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">42 Nice</span></p>
-    <p class="text-white text-2xl mt-4"></p>
+    <p class="text-white text-center text-2xl mt-12 mx-4">I'm <span class="font-bold animate-text bg-gradient-to-r bg-clip-text text-transparent from-from to-to">Axel Lopez</span></p>
+    <p class="text-white text-center text-2xl mx-4">A <span class="font-bold animate-text bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">software developer</span> and student at <span class="font-bold animate-text bg-gradient-to-r from-slate-300 to-slate-400 bg-clip-text text-transparent">42 Nice</span></p>
   
     <span class="flex justify-center mt-12">
       <button on:click={() => scrollSection('experience')}>
@@ -51,8 +82,13 @@
       </button>
     </span>
   </div>
-  <div id="cursor-blur" class="w-64 h-64 bg-gradient-to-r from-from to-to rounded-full opacity-[12%] blur-3xl absolute -translate-x-1/2 -translate-y-1/2 -z-10"></div>
-</div>
+  <div id="cursor-blur" class="w-64 h-64 bg-gradient-to-r from-from to-to rounded-full opacity-[12%] blur-3xl fixed -translate-x-1/2 -translate-y-1/2 -z-10 invisible"></div>
+  <!--
+    <div class="bubble w-64 h-64 bg-gradient-to-r from-from to-to rounded-full opacity-[12%] blur-3xl absolute -translate-x-1/2 -translate-y-1/2 -z-10 invisible"></div>
+    <div class="bubble w-64 h-64 bg-gradient-to-r from-from to-to rounded-full opacity-[12%] blur-3xl absolute -translate-x-1/2 -translate-y-1/2 -z-10 invisible"></div>
+    <div class="bubble w-64 h-64 bg-gradient-to-r from-from to-to rounded-full opacity-[12%] blur-3xl absolute -translate-x-1/2 -translate-y-1/2 -z-10 invisible"></div>
+  -->
+</section>
 
 <style>
 .wave {

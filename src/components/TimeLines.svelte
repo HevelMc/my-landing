@@ -3,13 +3,18 @@
   import TimeElement from "./TimeElement.svelte";
 
   let isRightSide = false;
+
+  function changeSelect(e: Event) {
+    isRightSide = (e.target as HTMLSelectElement).value === "Formations";
+  }
 </script>
 
-<section id="experience" class="flex flex-col items-center">
+<section id="experience" class="flex flex-col items-center ml-8 mr-4">
   <div class="sm:hidden mb-4">
     <select
       id="tabs"
       class="border text-sm rounded-lg focus:ring-from focus:border-from block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
+      on:change={changeSelect}
     >
       <option>Éxperiences</option>
       <option>Formations</option>
@@ -120,7 +125,7 @@
   {#if isRightSide}
     <ol
       class="relative border-l border-gray-700 mb-20 flex flex-col gap-6 max-w-2xl"
-      in:fly="{{ x: 200, duration: 200 }}"
+      in:fly="{{ x: -200, duration: 200 }}"
     >
       <TimeElement
         title="42Nice - École de programmation"
