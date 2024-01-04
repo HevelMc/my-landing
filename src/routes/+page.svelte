@@ -3,6 +3,8 @@
   import TimeLines from "../components/TimeLines.svelte";
 </script>
 
-<Hero />
-<TimeLines />
-<div class="pb-16" />
+<div class="overflow-x-hidden relative">
+  <Hero />
+  <TimeLines />
+  <div class="pb-16" />
+</div>
