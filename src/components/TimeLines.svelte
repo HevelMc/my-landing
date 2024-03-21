@@ -10,7 +10,7 @@
   let formations: any[] = [];
 
   onMount(() => {
-    axios.get("https://back.alopez.fr/items/experiences?fields=*,links.*,icon").then((res) => {
+    axios.get("https://back.alopez.fr/items/experiences?fields=*,links.*,icon&sort=sort").then((res) => {
       experiences = res.data.data.filter((item: any) => item.type === "experience");
       formations = res.data.data.filter((item: any) => item.type === "formation");
     });
